@@ -86,6 +86,7 @@
             "post-install": [
                 "install -Dm644 --target ${FLATPAK_DEST}/share/metainfo/ org.gimp.GIMP.Plugin.Lensfun.metainfo.xml",
                 "appstream-compose --basename=org.gimp.GIMP.Plugin.Lensfun --prefix=${FLATPAK_DEST} --origin=flatpak org.gimp.GIMP.Plugin.Lensfun",
+                "strip gimp-lensfun",
                 "install -Dm755 -t ${FLATPAK_DEST}/plug-ins gimp-lensfun",
                 "install -Dm644 -t $FLATPAK_DEST/share/licenses/gimp-lensfun LICENSE.txt"
             ],

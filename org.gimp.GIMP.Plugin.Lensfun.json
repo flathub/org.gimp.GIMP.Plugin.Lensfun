@@ -3,7 +3,7 @@
     "branch": "2-40",
     "runtime": "org.gimp.GIMP",
     "runtime-version": "stable",
-    "sdk": "org.gnome.Sdk//43",
+    "sdk": "org.gnome.Sdk//44",
     "build-extension": true,
     "appstream-compose": false,
     "build-options": {
@@ -49,7 +49,7 @@
             },
             "post-install": [
                 "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} --ignore-installed lxml",
-                "PYTHONPATH=${FLATPAK_DEST}/lib/python3.7/site-packages python3 lensfun_convert_db.py $PWD lensfun-git/data/db",
+                "PYTHONPATH=${FLATPAK_DEST}/lib/python3.10/site-packages python3 lensfun_convert_db.py $PWD lensfun-git/data/db",
                 "rm -rf ${FLATPAK_DEST}/share/lensfun/version_1/*",
                 "tar xvf db/version_1.tar -C ${FLATPAK_DEST}/share/lensfun/version_1"
             ],
@@ -73,7 +73,7 @@
                     /* used only for database*/
                     "dest": "lensfun-git",
                     "url": "https://github.com/lensfun/lensfun.git",
-                    "commit": "a77fa3d7dbaeb82dd44bb863416c978b061b81a1"
+                    "commit": "a007676fa341c80900a59d897f30c438ac185177"
                 }
             ]
         },
@@ -84,8 +84,8 @@
                 "make"
             ],
             "post-install": [
-                "install -Dm644 --target ${FLATPAK_DEST}/share/metainfo/ org.gimp.GIMP.Plugin.Lensfun.metainfo.xml",
-                "appstream-compose --basename=org.gimp.GIMP.Plugin.Lensfun --prefix=${FLATPAK_DEST} --origin=flatpak org.gimp.GIMP.Plugin.Lensfun",
+                "install -Dm644 org.gimp.GIMP.Plugin.Lensfun.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/",
+                "appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}",
                 "strip gimp-lensfun",
                 "install -Dm755 -t ${FLATPAK_DEST}/plug-ins gimp-lensfun",
                 "install -Dm644 -t $FLATPAK_DEST/share/licenses/gimp-lensfun LICENSE.txt"
@@ -98,7 +98,10 @@
                 },
                 {
                     "type": "patch",
-                    "path": "gimp-lensfun-exiv2.patch"
+                    "paths": [
+                        "patches/gimp-lensfun-exiv2.patch",
+                        "patches/gimp-lensfun-exiv2-028.patch"
+                    ]
                 },
                 {
                     "type": "file",

@@ -3,11 +3,16 @@
   <id>org.gimp.GIMP.Plugin.Lensfun</id>
   <extends>org.gimp.GIMP</extends>
   <name>GimpLensfun</name>
-  <summary>GimpLensfun is a Gimp plugin to correct lens distortion using the lensfun library and database.</summary>
+  <summary>Lensfun Gimp plugin</summary>
+  <description>
+    <p>GimpLensfun is a Gimp plugin to correct lens distortion using
+    the lensfun library and database</p>
+  </description>
   <url type="homepage">https://seebk.github.io/GIMP-Lensfun/</url>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
-  <updatecontact>hub_AT_figuiere.net</updatecontact>
+  <update_contact>hub_AT_figuiere.net</update_contact>
+  <developer_name>Sebastian Kraft</developer_name>
   <releases>
     <release date="2015-11-15" version="0.2.4"/>
   </releases>

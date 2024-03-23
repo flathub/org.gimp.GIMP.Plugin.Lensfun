@@ -3,9 +3,8 @@
     "branch": "2-40",
     "runtime": "org.gimp.GIMP",
     "runtime-version": "stable",
-    "sdk": "org.gnome.Sdk//44",
+    "sdk": "org.gnome.Sdk//46",
     "build-extension": true,
-    "appstream-compose": false,
     "build-options": {
         "prefix": "/app/extensions/Lensfun",
         "prepend-path": "/app/extensions/Lensfun/bin",
@@ -33,12 +32,6 @@
             ],
             "build-options": {
                 "arch": {
-                    "i386": {
-                        "config-opts": [
-                            "-DBUILD_FOR_SSE=1",
-                            "-DBUILD_FOR_SSE2=1"
-                        ]
-                    },
                     "x86_64": {
                         "config-opts": [
                             "-DBUILD_FOR_SSE=1",
@@ -73,7 +66,7 @@
                     /* used only for database*/
                     "dest": "lensfun-git",
                     "url": "https://github.com/lensfun/lensfun.git",
-                    "commit": "a007676fa341c80900a59d897f30c438ac185177"
+                    "commit": "9d4f4ef365bf0e4b38a39f5887d7702bf6268377"
                 }
             ]
         },
@@ -85,7 +78,6 @@
             ],
             "post-install": [
                 "install -Dm644 org.gimp.GIMP.Plugin.Lensfun.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/",
-                "appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}",
                 "strip gimp-lensfun",
                 "install -Dm755 -t ${FLATPAK_DEST}/plug-ins gimp-lensfun",
                 "install -Dm644 -t $FLATPAK_DEST/share/licenses/gimp-lensfun LICENSE.txt"
